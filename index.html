@@ -36,6 +36,16 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
+        .brand-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .brand-logo {
+            height: 2rem;
+            width: auto;
+        }
+
         .headline {
             font-size: 3.5rem;
             font-weight: 900;
@@ -44,11 +54,9 @@
             color: #191b25;
         }
 
-        .meow-logo {
-            height: 4.8rem;
-            width: auto;
-            vertical-align: middle;
-            margin: 0 0.5rem;
+        .meow-highlight {
+            color: #ff6631;
+            text-decoration: underline;
         }
 
         .brex-highlight {
@@ -69,17 +77,8 @@
             color: #191b25;
         }
 
-        .challenge-text {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #ff6631;
-            margin-bottom: 10px;
-        }
-
-        .question-text {
-            font-size: 1.5rem;
+        .subheadline .question {
             font-weight: 400;
-            color: #191b25;
         }
 
         .input-section {
@@ -259,8 +258,8 @@
                 font-size: 2.5rem;
             }
             
-            .meow-logo {
-                height: 4rem;
+            .brand-logo {
+                height: 1.5rem;
             }
             
             .money-highlight {
@@ -287,18 +286,23 @@
 </head>
 <body>
     <div class="container">
+        <div class="brand-header">
+            <a href="https://meow.com" target="_blank">
+                <img src="meow.svg" alt="Meow" class="brand-logo">
+            </a>
+        </div>
+
         <div class="headline">
             if you used<br>
-            <img src="meow.svg" alt="MEOW" class="meow-logo">
-            instead<br>
+            <span class="meow-highlight">MEOW</span> instead<br>
             of <span class="brex-highlight">BREX</span>,<br>
             you'd have<br>
             <span class="money-highlight">more $$$$</span>
         </div>
 
         <div class="subheadline">
-            <div class="challenge-text">don't believe us?</div>
-            <div class="question-text">how much do you keep in your business checking account?</div>
+            don't believe us?<br>
+            <span class="question">how much do you keep in your business checking account?</span>
         </div>
 
         <div class="input-section">
