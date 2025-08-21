@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Are You Losing? - Business Banking Opportunity Cost Calculator</title>
+    <title>If you used MEOW instead of BREX, you'd have more $$$$</title>
     <meta name="description" content="Calculate how much money you're losing by not earning interest on your business checking account. Switch to Meow and start earning 3.52% APY.">
     
     <style>
@@ -15,143 +15,152 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #f6f6f6;
+            color: #191b25;
+            line-height: 1.2;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 30px;
+            max-width: 600px;
+            width: 100%;
             text-align: center;
+            background-color: #fdfdfd;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .headline {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 30px;
         }
 
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .meow-highlight {
+            color: #ff6631;
+            text-decoration: underline;
         }
 
-        .calculator {
-            padding: 40px 30px;
+        .brex-highlight {
+            color: #4d86f0;
+            text-decoration: underline;
+        }
+
+        .money-highlight {
+            color: #ff6631;
+            font-size: 4rem;
+            font-weight: 900;
+        }
+
+        .subheadline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #191b25;
         }
 
         .input-section {
-            text-align: center;
-            margin-bottom: 40px;
+            margin: 30px 0;
         }
 
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 1.1rem;
+        .input-label {
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 10px;
-            color: #333;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        .input-field {
+        .amount-input {
             width: 100%;
             max-width: 300px;
             padding: 15px 20px;
-            font-size: 1.2rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: 3px solid #4d86f0;
+            border-radius: 8px;
+            background-color: white;
+            color: #191b25;
             text-align: center;
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .input-field:focus {
+        .amount-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #ff6631;
+            box-shadow: 0 0 0 3px rgba(255, 102, 49, 0.2);
         }
 
         .quick-amounts {
             display: flex;
-            justify-content: center;
             gap: 10px;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-bottom: 20px;
         }
 
-        .quick-amount {
+        .quick-btn {
             padding: 8px 16px;
-            background: #f8f9fa;
-            border: 1px solid #e1e5e9;
-            border-radius: 20px;
+            background-color: #f6f6f6;
+            border: 2px solid #4d86f0;
+            border-radius: 6px;
+            color: #4d86f0;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            transition: all 0.2s;
         }
 
-        .quick-amount:hover {
-            background: #667eea;
+        .quick-btn:hover {
+            background-color: #4d86f0;
             color: white;
-            border-color: #667eea;
         }
 
         .results {
-            display: none;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .results.show {
-            display: block;
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f6f6f6;
+            border-radius: 8px;
+            border-left: 5px solid #ff6631;
         }
 
         .loss-amount {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #dc3545;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ff6631;
             margin-bottom: 10px;
         }
 
-        .loss-label {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 30px;
+        .loss-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #191b25;
+            margin-bottom: 15px;
         }
 
         .breakdown {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin: 20px 0;
         }
 
         .breakdown-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
             text-align: center;
         }
 
         .breakdown-amount {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #dc3545;
+            color: #ff6631;
         }
 
         .breakdown-label {
@@ -160,120 +169,68 @@
             margin-top: 5px;
         }
 
-        .examples {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-
-        .examples h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .example-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .example-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .example {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #191b25;
+            margin-top: 15px;
             padding: 15px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .example-icon {
-            width: 40px;
-            height: 40px;
-            background: #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .example-text {
-            flex: 1;
-            font-size: 1rem;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 4px solid #4d86f0;
         }
 
         .cta-section {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
+            margin-top: 30px;
         }
 
         .cta-button {
             display: inline-block;
-            background: white;
-            color: #28a745;
             padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            background-color: #4d86f0;
+            color: white;
             text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin: 10px;
         }
 
         .cta-button:hover {
+            background-color: #3a75d8;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .secondary-actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        .secondary-cta {
+            background-color: #ff6631;
         }
 
-        .secondary-button {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+        .secondary-cta:hover {
+            background-color: #e55a2b;
         }
 
-        .secondary-button:hover {
-            background: white;
-            color: #28a745;
-        }
-
-        .footer {
-            padding: 20px;
-            text-align: center;
+        .disclaimer {
+            font-size: 0.8rem;
             color: #666;
-            font-size: 0.9rem;
+            margin-top: 20px;
+            line-height: 1.4;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .loss-amount {
+            .headline {
                 font-size: 2.5rem;
             }
             
-            .breakdown {
-                grid-template-columns: 1fr;
+            .money-highlight {
+                font-size: 3rem;
             }
             
-            .secondary-actions {
+            .container {
+                padding: 20px;
+            }
+            
+            .quick-amounts {
                 flex-direction: column;
                 align-items: center;
             }
@@ -282,209 +239,119 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>What Are You Losing?</h1>
-            <p>Calculate the opportunity cost of 0% APY vs. Meow's 3.52%</p>
+        <div class="headline">
+            if you used<br>
+            <span class="meow-highlight">MEOW</span> instead<br>
+            of <span class="brex-highlight">BREX</span>,<br>
+            you'd have<br>
+            <span class="money-highlight">more $$$$</span>
         </div>
 
-        <div class="calculator">
-            <div class="input-section">
-                <div class="input-group">
-                    <label for="balance">How much do you keep in your business checking account?</label>
-                    <input type="text" id="balance" class="input-field" placeholder="$100,000" autocomplete="off">
-                </div>
-                <div class="quick-amounts">
-                    <div class="quick-amount" onclick="setAmount(50000)">$50K</div>
-                    <div class="quick-amount" onclick="setAmount(100000)">$100K</div>
-                    <div class="quick-amount" onclick="setAmount(250000)">$250K</div>
-                    <div class="quick-amount" onclick="setAmount(500000)">$500K</div>
-                </div>
-            </div>
+        <div class="subheadline">
+            don't believe us?<br>
+            how much do you keep in your business checking account?
+        </div>
 
-            <div class="results" id="results">
-                <div class="loss-amount" id="annualLoss">$3,520</div>
-                <div class="loss-label">lost annually by not earning interest</div>
-
-                <div class="breakdown">
-                    <div class="breakdown-item">
-                        <div class="breakdown-amount" id="monthlyLoss">$293</div>
-                        <div class="breakdown-label">per month</div>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="breakdown-amount" id="dailyLoss">$9.64</div>
-                        <div class="breakdown-label">per day</div>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="breakdown-amount" id="hourlyLoss">$0.40</div>
-                        <div class="breakdown-label">per hour</div>
-                    </div>
-                </div>
-
-                <div class="examples">
-                    <h3>That money could buy you:</h3>
-                    <div class="example-list" id="examples">
-                        <!-- Examples will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-section">
-                <a href="https://meow.com" class="cta-button" target="_blank">Switch to Meow and start earning</a>
-                <div class="secondary-actions">
-                    <button class="secondary-button" onclick="resetCalculator()">Calculate for different amount</button>
-                    <button class="secondary-button" onclick="shareResults()">Share this with your team</button>
-                </div>
+        <div class="input-section">
+            <input type="text" id="amount" class="amount-input" placeholder="$100,000" oninput="calculateLoss()">
+            
+            <div class="quick-amounts">
+                <button class="quick-btn" onclick="setAmount(50000)">$50K</button>
+                <button class="quick-btn" onclick="setAmount(100000)">$100K</button>
+                <button class="quick-btn" onclick="setAmount(250000)">$250K</button>
+                <button class="quick-btn" onclick="setAmount(500000)">$500K</button>
             </div>
         </div>
 
-        <div class="footer">
-            <p>Meow Technologies is a financial technology company, not a bank. Banking services are provided by Cross River Bank and Grasshopper Bank, N.A; Members FDIC.</p>
+        <div id="results" class="results" style="display: none;">
+            <div class="loss-amount" id="lossAmount">$0</div>
+            <div class="loss-text">you're losing this much every year</div>
+            
+            <div class="breakdown">
+                <div class="breakdown-item">
+                    <div class="breakdown-amount" id="monthlyLoss">$0</div>
+                    <div class="breakdown-label">per month</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-amount" id="dailyLoss">$0</div>
+                    <div class="breakdown-label">per day</div>
+                </div>
+                <div class="breakdown-item">
+                    <div class="breakdown-amount" id="hourlyLoss">$0</div>
+                    <div class="breakdown-label">per hour</div>
+                </div>
+            </div>
+
+            <div class="example" id="example">
+                That's like throwing away a new MacBook every year!
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="https://meow.com" class="cta-button" target="_blank">Switch to Meow</a>
+            <a href="https://meow.com" class="cta-button secondary-cta" target="_blank">Learn More</a>
+        </div>
+
+        <div class="disclaimer">
+            * Based on Meow's 3.52% APY vs 0% APY on Brex business checking. 
+            Rates may vary. This is for illustrative purposes only.
         </div>
     </div>
 
     <script>
-        const MEOW_APY = 0.0352;
-        const COMPETITOR_APY = 0.0000;
-
-        // Example categories based on annual loss
-        const examples = {
-            small: [
-                { icon: '💻', text: 'A new MacBook for your intern' },
-                { icon: '📊', text: '2 months of QuickBooks subscription' },
-                { icon: '🍕', text: 'A team lunch every month' },
-                { icon: '☕', text: 'Daily coffee for your entire team' }
-            ],
-            medium: [
-                { icon: '👨‍💼', text: 'A new employee\'s first month salary' },
-                { icon: '☁️', text: '6 months of AWS hosting' },
-                { icon: '✈️', text: 'A business class flight to your next conference' },
-                { icon: '📱', text: 'New phones for your entire team' }
-            ],
-            large: [
-                { icon: '🎯', text: 'A new hire\'s signing bonus' },
-                { icon: '🏢', text: '3 months of office rent' },
-                { icon: '📈', text: 'A complete marketing campaign' },
-                { icon: '💼', text: 'Professional development for your team' }
-            ],
-            huge: [
-                { icon: '👨‍💻', text: 'A full-time junior developer' },
-                { icon: '⏰', text: '6 months of runway extension' },
-                { icon: '🛠️', text: 'A major software license' },
-                { icon: '🎓', text: 'Executive coaching for your leadership team' }
-            ]
-        };
-
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(amount);
-        }
-
-        function formatSmallCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(amount);
-        }
-
-        function calculateOpportunityCost(balance) {
-            const meowEarnings = balance * MEOW_APY;
-            const competitorEarnings = balance * COMPETITOR_APY;
-            return meowEarnings - competitorEarnings;
-        }
-
-        function getExamples(annualLoss) {
-            if (annualLoss >= 25000) return examples.huge;
-            if (annualLoss >= 10000) return examples.large;
-            if (annualLoss >= 5000) return examples.medium;
-            return examples.small;
-        }
-
-        function updateResults(balance) {
-            if (!balance || balance <= 0) {
-                document.getElementById('results').classList.remove('show');
-                return;
-            }
-
-            const annualLoss = calculateOpportunityCost(balance);
-            const monthlyLoss = annualLoss / 12;
-            const dailyLoss = annualLoss / 365;
-            const hourlyLoss = dailyLoss / 24;
-
-            document.getElementById('annualLoss').textContent = formatCurrency(annualLoss);
-            document.getElementById('monthlyLoss').textContent = formatCurrency(monthlyLoss);
-            document.getElementById('dailyLoss').textContent = formatSmallCurrency(dailyLoss);
-            document.getElementById('hourlyLoss').textContent = formatSmallCurrency(hourlyLoss);
-
-            // Update examples
-            const exampleList = document.getElementById('examples');
-            const relevantExamples = getExamples(annualLoss);
-            
-            exampleList.innerHTML = relevantExamples.map(example => `
-                <div class="example-item">
-                    <div class="example-icon">${example.icon}</div>
-                    <div class="example-text">${example.text}</div>
-                </div>
-            `).join('');
-
-            document.getElementById('results').classList.add('show');
-        }
-
         function setAmount(amount) {
-            document.getElementById('balance').value = formatCurrency(amount).replace('$', '').replace(',', '');
-            updateResults(amount);
+            document.getElementById('amount').value = formatNumber(amount);
+            calculateLoss();
         }
 
-        function resetCalculator() {
-            document.getElementById('balance').value = '';
-            document.getElementById('results').classList.remove('show');
-            document.getElementById('balance').focus();
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-US').format(num);
         }
 
-        function shareResults() {
-            const balance = document.getElementById('balance').value;
-            const annualLoss = document.getElementById('annualLoss').textContent;
+        function parseAmount(input) {
+            return parseFloat(input.replace(/[$,]/g, '')) || 0;
+        }
+
+        function calculateLoss() {
+            const amount = parseAmount(document.getElementById('amount').value);
+            const meowRate = 0.0352; // 3.52% APY
+            const brexRate = 0.00; // 0% APY
             
-            const text = `I just calculated that I'm losing ${annualLoss} annually by not earning interest on my business checking account. Check it out: ${window.location.href}`;
+            const annualLoss = amount * (meowRate - brexRate);
             
-            if (navigator.share) {
-                navigator.share({
-                    title: 'What Are You Losing?',
-                    text: text,
-                    url: window.location.href
-                });
+            if (amount > 0) {
+                document.getElementById('results').style.display = 'block';
+                
+                document.getElementById('lossAmount').textContent = '$' + formatNumber(Math.round(annualLoss));
+                document.getElementById('monthlyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 12));
+                document.getElementById('dailyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 365));
+                document.getElementById('hourlyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 8760));
+                
+                // Update example based on loss amount
+                let example = '';
+                if (annualLoss >= 25000) {
+                    example = "That's like throwing away a full-time junior developer's salary!";
+                } else if (annualLoss >= 10000) {
+                    example = "That's like throwing away a new hire's signing bonus!";
+                } else if (annualLoss >= 5000) {
+                    example = "That's like throwing away a new employee's first month salary!";
+                } else if (annualLoss >= 1000) {
+                    example = "That's like throwing away a new MacBook for your intern!";
+                } else {
+                    example = "That's money you could be reinvesting in your business!";
+                }
+                document.getElementById('example').textContent = example;
             } else {
-                // Fallback to copying to clipboard
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('Results copied to clipboard!');
-                });
+                document.getElementById('results').style.display = 'none';
             }
         }
 
-        // Event listeners
-        document.getElementById('balance').addEventListener('input', function(e) {
-            const value = e.target.value.replace(/[$,]/g, '');
-            const numericValue = parseFloat(value);
-            
-            if (!isNaN(numericValue)) {
-                updateResults(numericValue);
+        // Format input as user types
+        document.getElementById('amount').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[$,]/g, '');
+            if (value) {
+                e.target.value = formatNumber(parseFloat(value));
             }
-        });
-
-        document.getElementById('balance').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.target.blur();
-            }
-        });
-
-        // Focus on input when page loads
-        window.addEventListener('load', function() {
-            document.getElementById('balance').focus();
         });
     </script>
 </body>
