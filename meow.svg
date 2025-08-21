@@ -1,0 +1,10 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cat icon -->
+  <circle cx="15" cy="20" r="8" fill="#ff6631"/>
+  <circle cx="12" cy="18" r="2" fill="white"/>
+  <circle cx="18" cy="18" r="2" fill="white"/>
+  <path d="M 15 25 Q 12 22 15 19 Q 18 22 15 25" fill="white"/>
+  
+  <!-- "meow" text -->
+  <text x="30" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#191b25">meow</text>
+</svg>
