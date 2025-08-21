@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>If you used MEOW instead of BREX, you'd have more $$$$</title>
-    <meta name="description" content="Calculate how much money you're losing by not earning interest on your business checking account. Switch to Meow and start earning 3.52% APY.">
+    <meta name="description" content="Calculate how much money you're losing by not earning interest on your business checking account. Switch to Meow and start earning up to 3.52% APY.">
     
     <style>
         * {
@@ -43,9 +43,11 @@
             margin-bottom: 30px;
         }
 
-        .meow-highlight {
-            color: #ff6631;
-            text-decoration: underline;
+        .meow-logo {
+            height: 3.5rem;
+            width: auto;
+            vertical-align: middle;
+            margin: 0 0.5rem;
         }
 
         .brex-highlight {
@@ -68,13 +70,6 @@
 
         .input-section {
             margin: 30px 0;
-        }
-
-        .input-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: block;
         }
 
         .amount-input {
@@ -145,7 +140,7 @@
 
         .breakdown {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin: 20px 0;
         }
@@ -210,6 +205,34 @@
             background-color: #e55a2b;
         }
 
+        .explanation {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f6f6f6;
+            border-radius: 8px;
+            border-left: 5px solid #4d86f0;
+            text-align: left;
+        }
+
+        .explanation h3 {
+            color: #191b25;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .explanation p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            color: #ff6631;
+            font-weight: 600;
+        }
+
         .disclaimer {
             font-size: 0.8rem;
             color: #666;
@@ -220,6 +243,10 @@
         @media (max-width: 768px) {
             .headline {
                 font-size: 2.5rem;
+            }
+            
+            .meow-logo {
+                height: 2.5rem;
             }
             
             .money-highlight {
@@ -234,6 +261,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .breakdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -241,7 +272,8 @@
     <div class="container">
         <div class="headline">
             if you used<br>
-            <span class="meow-highlight">MEOW</span> instead<br>
+            <img src="03-brand-assets/meow.svg" alt="MEOW" class="meow-logo">
+            instead<br>
             of <span class="brex-highlight">BREX</span>,<br>
             you'd have<br>
             <span class="money-highlight">more $$$$</span>
@@ -273,6 +305,10 @@
                     <div class="breakdown-label">per month</div>
                 </div>
                 <div class="breakdown-item">
+                    <div class="breakdown-amount" id="weeklyLoss">$0</div>
+                    <div class="breakdown-label">per week</div>
+                </div>
+                <div class="breakdown-item">
                     <div class="breakdown-amount" id="dailyLoss">$0</div>
                     <div class="breakdown-label">per day</div>
                 </div>
@@ -292,8 +328,17 @@
             <a href="https://meow.com" class="cta-button secondary-cta" target="_blank">Learn More</a>
         </div>
 
+        <div class="explanation">
+            <h3>Why This Matters</h3>
+            <p>Most business banking platforms offer <span class="highlight">0% interest</span> on your operating cash. That means every dollar sitting in your checking account is losing value to inflation.</p>
+            
+            <p>With Meow, you earn <span class="highlight">1.2% APY</span> on your first $100,000 and <span class="highlight">3.52% APY</span> on every dollar above that. Plus, you can earn up to <span class="highlight">4.36% APY</span> on treasury accounts for longer-term cash.</p>
+            
+            <p>This isn't just about earning interest—it's about putting your operating funds to work while maintaining full liquidity for your business needs.</p>
+        </div>
+
         <div class="disclaimer">
-            * Based on Meow's 3.52% APY vs 0% APY on Brex business checking. 
+            * Based on Meow's tiered APY rates vs 0% APY on Brex business checking. 
             Rates may vary. This is for illustrative purposes only.
         </div>
     </div>
@@ -314,31 +359,55 @@
 
         function calculateLoss() {
             const amount = parseAmount(document.getElementById('amount').value);
-            const meowRate = 0.0352; // 3.52% APY
-            const brexRate = 0.00; // 0% APY
             
-            const annualLoss = amount * (meowRate - brexRate);
+            if (amount <= 0) {
+                document.getElementById('results').style.display = 'none';
+                return;
+            }
+
+            // Meow's tiered rate structure
+            let meowInterest = 0;
+            if (amount <= 100000) {
+                meowInterest = amount * 0.012; // 1.2% on first $100K
+            } else {
+                meowInterest = (100000 * 0.012) + ((amount - 100000) * 0.0352); // 1.2% on first $100K, 3.52% on rest
+            }
+
+            // Competitors offer 0% on business checking
+            const brexRate = 0.00;
+            const annualLoss = meowInterest - (amount * brexRate);
             
             if (amount > 0) {
                 document.getElementById('results').style.display = 'block';
                 
                 document.getElementById('lossAmount').textContent = '$' + formatNumber(Math.round(annualLoss));
                 document.getElementById('monthlyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 12));
+                document.getElementById('weeklyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 52));
                 document.getElementById('dailyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 365));
                 document.getElementById('hourlyLoss').textContent = '$' + formatNumber(Math.round(annualLoss / 8760));
                 
                 // Update example based on loss amount
                 let example = '';
                 if (annualLoss >= 25000) {
-                    example = "That's like throwing away a full-time junior developer's salary!";
+                    example = "💼 That's a full-time junior developer's salary!";
                 } else if (annualLoss >= 10000) {
-                    example = "That's like throwing away a new hire's signing bonus!";
+                    example = "🎓 That's a new hire's signing bonus!";
                 } else if (annualLoss >= 5000) {
-                    example = "That's like throwing away a new employee's first month salary!";
+                    example = "👨‍💼 That's a new employee's first month salary!";
+                } else if (annualLoss >= 2500) {
+                    example = "💻 That's a new MacBook Pro for your team!";
                 } else if (annualLoss >= 1000) {
-                    example = "That's like throwing away a new MacBook for your intern!";
+                    example = "💻 That's a new MacBook for your intern!";
+                } else if (annualLoss >= 500) {
+                    example = "☕ That's a year of coffee for your office!";
+                } else if (annualLoss >= 250) {
+                    example = "🍕 That's a team lunch every month!";
+                } else if (annualLoss >= 100) {
+                    example = "📱 That's a new iPhone for your business!";
+                } else if (annualLoss >= 50) {
+                    example = "🎯 That's a nice team dinner!";
                 } else {
-                    example = "That's money you could be reinvesting in your business!";
+                    example = "💰 That's money you could be reinvesting!";
                 }
                 document.getElementById('example').textContent = example;
             } else {
@@ -352,6 +421,11 @@
             if (value) {
                 e.target.value = formatNumber(parseFloat(value));
             }
+        });
+    </script>
+</body>
+</html>
+
         });
     </script>
 </body>
