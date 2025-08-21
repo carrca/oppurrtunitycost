@@ -44,7 +44,7 @@
         }
 
         .meow-logo {
-            height: 6rem;
+            height: 16rem;
             width: auto;
             vertical-align: middle;
             margin: 0 0.5rem;
@@ -246,7 +246,7 @@
             }
             
             .meow-logo {
-                height: 4.5rem;
+                height: 12rem;
             }
             
             .money-highlight {
@@ -258,8 +258,11 @@
             }
             
             .quick-amounts {
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                max-width: 300px;
+                margin: 0 auto;
             }
             
             .breakdown {
@@ -391,28 +394,26 @@
                 if (annualLoss >= 500000) {
                     example = "🤯 Are you serious? You haven't clicked 'Switch' yet?";
                 } else if (annualLoss >= 250000) {
-                    example = "🧪 That's a founding engineer you never hired.";
+                    example = "🧪 That's a founding engineer.";
                 } else if (annualLoss >= 100000) {
                     example = "📈 That's your next GTM hire that could have catapulted you to the next phase of growth.";
                 } else if (annualLoss >= 50000) {
                     example = "📦 That's a missed growth experiment, fully funded and never launched.";
                 } else if (annualLoss >= 25000) {
-                    example = "🚪 That's two experienced engineers who never joined—because ops was broken.";
+                    example = "💼 That would pay for your fancy CRM software.";
                 } else if (annualLoss >= 10000) {
                     example = "🧑‍💻 That's a recruiter's fee *and* onboarding gone to waste.";
                 } else if (annualLoss >= 5000) {
-                    example = "🧰 That's your design, dev, and analytics stack for the year.";
+                    example = "🎨 That's your marketing team's creative tools for the year.";
                 } else if (annualLoss >= 2500) {
-                    example = "💻 That's your fancy CRM software—paid up front.";
+                    example = "💻 That's a brand new MacBook Air for your intern.";
                 } else if (annualLoss >= 1000) {
                     example = "🧑‍💼 That's a contractor's monthly retainer.";
                 } else if (annualLoss >= 500) {
-                    example = "🧃 That's a brand new MacBook Air for your intern.";
+                    example = "☕ That's snacks and coffee for the office this month.";
                 } else if (annualLoss >= 250) {
-                    example = "☕ That's snacks and coffee to the office this month.";
-                } else if (annualLoss >= 100) {
                     example = "🍕 That's lunch for the whole team this Friday.";
-                } else if (annualLoss >= 50) {
+                } else if (annualLoss >= 100) {
                     example = "🐦 That's X Premium for your co-founder.";
                 } else {
                     example = "☕ That's a week's worth of coffee. Don't burn it.";
@@ -433,4 +434,3 @@
     </script>
 </body>
 </html>
-
