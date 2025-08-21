@@ -44,7 +44,7 @@
         }
 
         .meow-logo {
-            height: 3.5rem;
+            height: 6rem;
             width: auto;
             vertical-align: middle;
             margin: 0 0.5rem;
@@ -246,7 +246,7 @@
             }
             
             .meow-logo {
-                height: 2.5rem;
+                height: 4.5rem;
             }
             
             .money-highlight {
@@ -329,12 +329,12 @@
         </div>
 
         <div class="explanation">
-            <h3>Why This Matters</h3>
-            <p>Most business banking platforms offer <span class="highlight">0% interest</span> on your operating cash. That means every dollar sitting in your checking account is losing value to inflation.</p>
+            <h3>Operating Cash vs. Treasury Accounts</h3>
+            <p>Most business banking platforms — including Brex and Mercury — offer <span class="highlight">0% interest</span> on your operating cash. That means every dollar sitting in your checking account is losing value to inflation.</p>
             
             <p>With Meow, you earn <span class="highlight">1.2% APY</span> on your first $100,000 and <span class="highlight">3.52% APY</span> on every dollar above that. Plus, you can earn up to <span class="highlight">4.36% APY</span> on treasury accounts for longer-term cash.</p>
             
-            <p>This isn't just about earning interest—it's about putting your operating funds to work while maintaining full liquidity for your business needs.</p>
+            <p>You work hard. Your money should too. Meow lets you put your operating funds to work while maintaining full liquidity for your business needs.</p>
         </div>
 
         <div class="disclaimer">
@@ -388,26 +388,34 @@
                 
                 // Update example based on loss amount
                 let example = '';
-                if (annualLoss >= 25000) {
-                    example = "💼 That's a full-time junior developer's salary!";
+                if (annualLoss >= 500000) {
+                    example = "🤯 Are you serious? You haven't clicked 'Switch' yet?";
+                } else if (annualLoss >= 250000) {
+                    example = "🧪 That's a founding engineer you never hired.";
+                } else if (annualLoss >= 100000) {
+                    example = "📈 That's your next GTM hire that could have catapulted you to the next phase of growth.";
+                } else if (annualLoss >= 50000) {
+                    example = "📦 That's a missed growth experiment, fully funded and never launched.";
+                } else if (annualLoss >= 25000) {
+                    example = "🚪 That's two experienced engineers who never joined—because ops was broken.";
                 } else if (annualLoss >= 10000) {
-                    example = "🎓 That's a new hire's signing bonus!";
+                    example = "🧑‍💻 That's a recruiter's fee *and* onboarding gone to waste.";
                 } else if (annualLoss >= 5000) {
-                    example = "👨‍💼 That's a new employee's first month salary!";
+                    example = "🧰 That's your design, dev, and analytics stack for the year.";
                 } else if (annualLoss >= 2500) {
-                    example = "💻 That's a new MacBook Pro for your team!";
+                    example = "💻 That's your fancy CRM software—paid up front.";
                 } else if (annualLoss >= 1000) {
-                    example = "💻 That's a new MacBook for your intern!";
+                    example = "🧑‍💼 That's a contractor's monthly retainer.";
                 } else if (annualLoss >= 500) {
-                    example = "☕ That's a year of coffee for your office!";
+                    example = "🧃 That's a brand new MacBook Air for your intern.";
                 } else if (annualLoss >= 250) {
-                    example = "🍕 That's a team lunch every month!";
+                    example = "☕ That's snacks and coffee to the office this month.";
                 } else if (annualLoss >= 100) {
-                    example = "📱 That's a new iPhone for your business!";
+                    example = "🍕 That's lunch for the whole team this Friday.";
                 } else if (annualLoss >= 50) {
-                    example = "🎯 That's a nice team dinner!";
+                    example = "🐦 That's X Premium for your co-founder.";
                 } else {
-                    example = "💰 That's money you could be reinvesting!";
+                    example = "☕ That's a week's worth of coffee. Don't burn it.";
                 }
                 document.getElementById('example').textContent = example;
             } else {
@@ -425,3 +433,4 @@
     </script>
 </body>
 </html>
+
